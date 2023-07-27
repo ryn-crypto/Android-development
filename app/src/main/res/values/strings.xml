@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Belajar Android Dasar</string>
+    <string name="app_name">Learn Android </string>
     <string name="nameEditText">Name :</string>
     <string name="sayHelloButton">Say Hello</string>
     <string name="sayHelloTextView">Hello %1$s</string>

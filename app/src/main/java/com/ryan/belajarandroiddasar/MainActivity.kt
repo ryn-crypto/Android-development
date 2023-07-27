@@ -30,10 +30,28 @@ class MainActivity : AppCompatActivity() {
 
             sayHelloButton.setOnClickListener {
 
+//                val  json = assets.open("sample.json")
+//                    .bufferedReader()
+//                    .use { it.readText() }
+//                Log.i("Asset", json)
+
+                val json = resources.openRawResource(R.raw.sample)
+                    .bufferedReader()
+                    .use { it.readText() }
+
+                Log.i("Asset",json)
+
                 Log.d("PZN", "This is debug Log")
                 Log.i("PZN", "This is Info Log")
-                Log.w("PZN", "This is Warnig Log")
+                Log.w("PZN", "This is Warning Log")
                 Log.e("PZN", "This is error Log")
+
+                Log.i("ValueResources", resources.getInteger(R.integer.maxPage).toString())
+                Log.i("ValueResources", resources.getBoolean(R.bool.isProductionMode).toString())
+                Log.i("ValueResources", resources.getIntArray(R.array.number).joinToString(","))
+                Log.i("ValueResources", resources.getColor(R.color.background, theme).toString())
+
+                sayHelloButton.setBackgroundColor(resources.getColor(R.color.background, theme))
 
                 val name = nameEditText.text.toString()
                 sayHelloTextView.text = resources.getString(R.string.sayHelloTextView, name)
