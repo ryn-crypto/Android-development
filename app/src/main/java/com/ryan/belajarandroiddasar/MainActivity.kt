@@ -1,8 +1,9 @@
 package com.ryan.belajarandroiddasar
 
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -20,6 +21,23 @@ class MainActivity : AppCompatActivity() {
             sayHelloTextView = findViewById(R.id.sayHelloTextView)
         }
 
+    private fun checkFingerprint() {
+        if (packageManager.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) {
+            Log.i("FEATURE", "Finggerprint ON")
+        } else {
+            Log.w("FEATURE", "Finggerprint OFF")
+        }
+    }
+
+    private fun checkPlatformVersion() {
+        Log.i("SDK", Build.VERSION.SDK_INT.toString())
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.S){
+          Log.i("SDK", "Disable feature, Because version sdk is lower than 31")
+        } else {
+            Log.i("SDK", "Feature active")
+        }
+    }
+
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView((R.layout.hello_world))
@@ -34,6 +52,9 @@ class MainActivity : AppCompatActivity() {
 //                    .bufferedReader()
 //                    .use { it.readText() }
 //                Log.i("Asset", json)
+
+                checkFingerprint()
+                checkPlatformVersion()
 
                 val json = resources.openRawResource(R.raw.sample)
                     .bufferedReader()
