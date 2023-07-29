@@ -38,6 +38,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun printHello(name: String) {
+        Log.i("DEBUG", name)
+    }
+
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView((R.layout.hello_world))
@@ -52,6 +56,9 @@ class MainActivity : AppCompatActivity() {
 //                    .bufferedReader()
 //                    .use { it.readText() }
 //                Log.i("Asset", json)
+
+                printHello("Ryan")
+                printHello("Joko")
 
                 checkFingerprint()
                 checkPlatformVersion()
